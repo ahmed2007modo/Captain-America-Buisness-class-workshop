@@ -45,30 +45,31 @@ const PRESENTERS = [
 
 const OPTION1_DATA = {
   competitorMatrix: [
-    { name: 'PlateWise', preVisit: '✅ Full AI Menu Analysis', postMeal: '✅ Silent Order', focus: 'Pre-Visit Intelligence' },
-    { name: 'MyFitnessPal', preVisit: '❌ Post-Meal Logging Only', postMeal: '✅ Calorie Tracking', focus: 'Post-Meal Logging' },
-    { name: 'OpenTable', preVisit: '❌ Reservation Only', postMeal: '❌ None', focus: 'Reservations' },
-    { name: 'Yelp', preVisit: '⚠️ Reviews Only', postMeal: '⚠️ Reviews Only', focus: 'User Reviews' },
+    { name: 'Legacy Calorie Trackers (MyFitnessPal, Yazio)', focus: 'Manual input calorie counting', gap: 'High friction, lacks localized restaurant integration, completely ignores dining context.' },
+    { name: 'Delivery Platforms (Wolt, Lieferando)', focus: 'On-demand logistics and choice overload', gap: 'Zero actionable health validation, treats macro-nutrients as an afterthought.' },
+    { name: 'Premium Concierge & Diners Clubs (Curated luxury access)', focus: 'Curated luxury access and status', gap: 'Completely unaligned with clinical health demands or modern pharmaceutical requirements (GLP-1).' },
+    { name: 'PlateWise (Our Solution)', focus: 'Contextual, 90-second automated macro matching', gap: 'Defensive Moat: Integrates localized menu item parsing directly with verified user metabolic profiles.' },
   ],
   moatPoints: [
-    { title: 'Pre-Visit Menu Analysis Pipeline', desc: 'AI reads menus before arrival, analyzing every dish for nutrition, allergens, and goal alignment.', icon: '🔍' },
-    { title: 'Multi-Modal Vision API (Gemini 1.5 Pro/Flash)', desc: 'Dual-engine vision processing for rapid OCR and deep nutritional extraction from menu images.', icon: '👁️' },
-    { title: 'Creator Partner Database Network', desc: 'Verified Berlin influencers share real dining experiences, validated by GLP-1 and metabolic communities.', icon: '⭐' },
-    { title: 'Ultra-Discreet Silent Order Interface', desc: 'One-tap dish ordering for servers — no phone distraction, no public menu browsing during client dinners.', icon: '🤫' },
+    { title: '01 - Hyper-Localized Menu Graph', desc: 'Deep, structured analysis of Berlin\'s premium corporate restaurant ecosystem in Mitte and Charlottenburg; expensive to duplicate.', icon: '🔍' },
+    { title: '02 - Zero-Friction 90-Second Loop', desc: 'Shifting user habit from reactive tracking to proactive structural choice filtering right before the meal is ordered.', icon: '👁️' },
+    { title: '03 - Clinical Metabolic Alignment', desc: 'Hard-coded programmatic validation built directly for GLP-1 portion/satiety management, low-glycemic, and insulin-smart profiles.', icon: '⭐' },
+    { title: '04 - Trusted B2B Network Integration', desc: 'Exclusive localized distribution partnerships embedded natively within premium workspaces, accelerator communities, and elite fitness networks.', icon: '🤫' },
   ],
   targetAudience: {
-    segment: 'Berlin High-Earners (38–55)',
-    plans: ['GLP-1 / Wegovy', 'Glucose Stability', 'Muscle Hypertrophy'],
-    description: 'Professionals who value health, discretion, and data-driven dining decisions.'
+    persona: 'High-performing urban professionals, corporate executives, and wellness-focused individuals in Berlin (Mitte & Charlottenburg).',
+    painPoint: 'Decision paralysis when dining out while maintaining strict metabolic, macro, or GLP-1 nutrition goals.',
+    habitShift: 'Shifting user habit from reactive tracking to proactive structural choice filtering right before the meal is ordered.'
   },
   personas: [
     { name: 'Michael', age: 44, role: 'Senior Consultant', needs: 'Fast, non-distracting choices during client dinners', pain: 'Can\'t browse menus publicly during business dinners' },
     { name: 'Andrea', age: 51, role: 'Lawyer on GLP-1', needs: 'Protein-dense dish suggestions to preserve lean muscle mass', pain: 'Struggles to find GLP-1 compatible high-protein options' },
   ],
   pitch: {
-    elevator: 'PlateWise is the AI dining coach that reads menus before you arrive, serving executive-level discreet nutrition tailored for GLP-1 and metabolic health.',
-    positioning: 'For high-performing Berlin professionals who value health and discretion, PlateWise provides automated pre-visit menu intelligence without phone distraction.',
-    valueProp: 'Zero friction pre-visit planning. AI-personalized nutrition. Discreet silent ordering. All in one platform.'
+    hook: 'Premium dining shouldn\'t break your metabolic health goals, yet executives face total decision paralysis every night.',
+    solution: 'PlateWise eliminates the friction. We don\'t force you to count calories. We filter the city\'s best menus through your exact biological profiles—giving you the perfect plate instantly.',
+    positioning: 'For high-performing urban professionals navigating business-driven dining, PlateWise is the privacy-first contextual filter that converts complex local restaurant menus into a single, goal-compliant choice in under 90 seconds.',
+    validation: ['AI-powered corporate restaurant menu matching.', 'Know exactly what fits your metabolic profile before the corporate lunch starts.']
   },
   valueCanvas: {
     target: 'Target launch: health-conscious adults in Berlin who need fast nutrition decisions while eating out',
@@ -580,19 +581,17 @@ export function PresentationPanel() {
                   <table className="w-full text-sm">
                     <thead>
                       <tr className="border-b border-white/[0.06]">
-                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Platform</th>
-                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Pre-Visit AI</th>
-                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Post-Meal</th>
-                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Focus</th>
+                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Competitor Tier</th>
+                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Core Focus</th>
+                        <th className="text-left py-3 text-xs font-semibold text-white/50 uppercase tracking-wider">Strategic Gap</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-white/[0.04]">
                       {OPTION1_DATA.competitorMatrix.map((row, i) => (
                         <motion.tr key={row.name} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.1 + i * 0.05 }} className="hover:bg-white/[0.02] transition-colors">
                           <td className="py-3 font-semibold text-white">{row.name}</td>
-                          <td className={cn('py-3 text-xs', row.preVisit.includes('✅') ? 'text-emerald-400' : row.preVisit.includes('⚠️') ? 'text-amber-400' : 'text-red-400')}>{row.preVisit}</td>
-                          <td className={cn('py-3 text-xs', row.postMeal.includes('✅') ? 'text-emerald-400' : 'text-red-400')}>{row.postMeal}</td>
-                          <td className="py-3 text-xs text-white/60">{row.focus}</td>
+                          <td className="py-3 text-xs text-white/70">{row.focus}</td>
+                          <td className="py-3 text-xs text-white/60">{row.gap}</td>
                         </motion.tr>
                       ))}
                     </tbody>
@@ -627,14 +626,16 @@ export function PresentationPanel() {
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-4">
-                    <p className="font-semibold text-white mb-1">Primary Segment</p>
-                    <p className="text-cyan-400 text-sm">{OPTION1_DATA.targetAudience.segment}</p>
-                    <div className="mt-2 flex flex-wrap gap-1.5">
-                      {OPTION1_DATA.targetAudience.plans.map(plan => (
-                        <span key={plan} className="rounded-full bg-cyan-500/10 px-2 py-0.5 text-[10px] text-cyan-400">{plan}</span>
-                      ))}
+                    <p className="font-semibold text-white mb-1">Primary Persona</p>
+                    <p className="text-cyan-400 text-sm">{OPTION1_DATA.targetAudience.persona}</p>
+                    <div className="mt-3 border-t border-white/[0.06] pt-3">
+                      <p className="text-xs font-semibold text-red-400/80 mb-1">Core Pain Point</p>
+                      <p className="text-xs text-white/60">{OPTION1_DATA.targetAudience.painPoint}</p>
                     </div>
-                    <p className="mt-2 text-xs text-white/50">{OPTION1_DATA.targetAudience.description}</p>
+                    <div className="mt-3 border-t border-white/[0.06] pt-3">
+                      <p className="text-xs font-semibold text-emerald-400/80 mb-1">Key Habit Shift</p>
+                      <p className="text-xs text-white/60">{OPTION1_DATA.targetAudience.habitShift}</p>
+                    </div>
                   </div>
                   <div className="space-y-3">
                     {OPTION1_DATA.personas.map((persona, i) => (
@@ -659,16 +660,27 @@ export function PresentationPanel() {
                 </div>
                 <div className="space-y-4">
                   <div className="rounded-xl bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 p-4">
-                    <p className="text-xs font-semibold text-cyan-400 mb-1">Elevator Pitch</p>
-                    <p className="text-sm text-white/80 italic">"{OPTION1_DATA.pitch.elevator}"</p>
-                  </div>
-                  <div className="rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 p-4">
-                    <p className="text-xs font-semibold text-purple-400 mb-1">Positioning Statement</p>
+                    <p className="text-xs font-semibold text-cyan-400 mb-1">Core Positioning Statement</p>
                     <p className="text-sm text-white/80 italic">"{OPTION1_DATA.pitch.positioning}"</p>
                   </div>
+                  <div className="rounded-xl bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-500/20 p-4">
+                    <p className="text-xs font-semibold text-purple-400 mb-1">Elevator Pitch — Hook</p>
+                    <p className="text-sm text-white/80 italic">"{OPTION1_DATA.pitch.hook}"</p>
+                  </div>
                   <div className="rounded-xl bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-500/20 p-4">
-                    <p className="text-xs font-semibold text-emerald-400 mb-1">Value Proposition</p>
-                    <p className="text-sm text-white/80">{OPTION1_DATA.pitch.valueProp}</p>
+                    <p className="text-xs font-semibold text-emerald-400 mb-1">Elevator Pitch — Solution</p>
+                    <p className="text-sm text-white/80">{OPTION1_DATA.pitch.solution}</p>
+                  </div>
+                  <div className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-4">
+                    <p className="text-xs font-semibold text-white/60 mb-2">Validation Testing Messages</p>
+                    <div className="grid gap-2 sm:grid-cols-2">
+                      {OPTION1_DATA.pitch.validation.map((v, i) => (
+                        <div key={i} className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-3">
+                          <p className="text-[10px] font-semibold text-amber-400 mb-1">Variant {String.fromCharCode(65 + i)}</p>
+                          <p className="text-xs text-white/70">"{v}"</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </motion.div>
