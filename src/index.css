@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 5 5 10;
+  --foreground: 240 10% 96%;
+  --card: 15 15 25;
+  --card-foreground: 240 10% 96%;
+  --popover: 15 15 25;
+  --popover-foreground: 240 10% 96%;
+  --primary: 185 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 200 20% 15%;
+  --secondary-foreground: 240 10% 96%;
+  --muted: 200 15% 12%;
+  --muted-foreground: 220 10% 65%;
+  --accent: 280 100% 65%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 200 20% 20%;
+  --input: 200 20% 15%;
+  --ring: 185 100% 50%;
+  --radius: 0.75rem;
+}
+
+* {
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
