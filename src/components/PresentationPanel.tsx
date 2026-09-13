@@ -71,10 +71,37 @@ const OPTION1_DATA = {
     valueProp: 'Zero friction pre-visit planning. AI-personalized nutrition. Discreet silent ordering. All in one platform.'
   },
   valueCanvas: {
-    pains: ['Can\'t analyze menus before arriving at restaurants', 'Phone distraction during client dinners', 'Uncertain about GLP-1 / Wegovy compatible dishes', 'No protein tracking at the point of ordering', 'Fear of social embarrassment in health-focused dining'],
-    gains: ['Confidence in every dining decision', 'Professional discretion maintained', 'Personalized nutrition aligned with health goals', 'Time saved through AI pre-analysis', 'Access to verified creator recommendations'],
-    products: ['Pre-Visit Menu Scanner', 'Gemini Vision Engine', 'Silent Order Card', 'Creator Partner Network', 'Metabolic Health Profiles'],
-    painRelievers: ['AI reads menus before you arrive', 'One-tap discreet ordering for servers', 'GLP-1 / Wegovy specific filtering', 'Protein density scoring per dish', 'Verified influencer validation']
+    target: 'Target launch: health-conscious adults in Berlin who need fast nutrition decisions while eating out',
+    jobs: [
+      'Choose healthier meals quickly when eating out',
+      'Stay aligned with weight, protein, glucose, or wellness goals',
+      'Avoid manual nutrition analysis during busy days',
+    ],
+    pains: [
+      'Tracking apps require logging after eating',
+      'Restaurant menus rarely show useful nutrition detail',
+      'Too much data creates decision fatigue',
+    ],
+    gains: [
+      'Feel confident about food choices',
+      'Save time while eating socially or between meetings',
+      'Maintain goals without overthinking every meal',
+    ],
+    features: [
+      'AI menu analysis and meal comparison',
+      'Personalized recommendations in under 90 seconds',
+      'Goal-based guidance for different nutrition needs',
+    ],
+    painRelievers: [
+      'Gives one clear recommendation before ordering',
+      'Removes ingredient-by-ingredient manual logging',
+      'Simplifies choices when time is limited',
+    ],
+    gainCreators: [
+      'Fast decision support at the moment of choice',
+      'Simple comparison between menu options',
+      'Practical guidance for everyday Berlin dining',
+    ],
   }
 }
 
@@ -648,38 +675,70 @@ export function PresentationPanel() {
 
               {/* Value Proposition Canvas */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/[0.08] p-6">
-                <div className="flex items-center gap-2 mb-4">
+                <div className="flex items-center gap-2 mb-2">
                   <Target className="h-5 w-5 text-cyan-400" />
-                  <h3 className="text-lg font-bold text-white">Value Proposition Canvas</h3>
+                  <h3 className="text-lg font-bold text-white">Value Proposition Canvas & Positioning</h3>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="rounded-xl bg-red-500/5 border border-red-500/10 p-4">
-                    <p className="font-semibold text-red-400 text-sm mb-2">Customer Pains</p>
-                    <ul className="space-y-1.5">
-                      {OPTION1_DATA.valueCanvas.pains.map((pain, i) => (
-                        <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-red-400 mt-1.5 shrink-0" />{pain}</li>
-                      ))}
-                    </ul>
+                <p className="text-sm text-white/60 mb-6">{OPTION1_DATA.valueCanvas.target}</p>
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Customer Side */}
+                  <div className="rounded-xl bg-cyan-500/5 border border-cyan-500/20 p-4">
+                    <p className="font-semibold text-cyan-400 text-sm mb-3 uppercase tracking-wider">Customer Side</p>
+                    <div className="space-y-3">
+                      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-3">
+                        <p className="text-xs font-semibold text-white mb-1.5">Jobs to Be Done</p>
+                        <ul className="space-y-1.5">
+                          {OPTION1_DATA.valueCanvas.jobs.map((job, i) => (
+                            <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-cyan-400 mt-1.5 shrink-0" />{job}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-lg bg-red-500/5 border border-red-500/10 p-3">
+                        <p className="text-xs font-semibold text-red-400 mb-1.5">Pains</p>
+                        <ul className="space-y-1.5">
+                          {OPTION1_DATA.valueCanvas.pains.map((pain, i) => (
+                            <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-red-400 mt-1.5 shrink-0" />{pain}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-lg bg-emerald-500/5 border border-emerald-500/10 p-3">
+                        <p className="text-xs font-semibold text-emerald-400 mb-1.5">Gains</p>
+                        <ul className="space-y-1.5">
+                          {OPTION1_DATA.valueCanvas.gains.map((gain, i) => (
+                            <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-emerald-400 mt-1.5 shrink-0" />{gain}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
                   </div>
-                  <div className="rounded-xl bg-emerald-500/5 border border-emerald-500/10 p-4">
-                    <p className="font-semibold text-emerald-400 text-sm mb-2">Customer Gains</p>
-                    <ul className="space-y-1.5">
-                      {OPTION1_DATA.valueCanvas.gains.map((gain, i) => (
-                        <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-emerald-400 mt-1.5 shrink-0" />{gain}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="rounded-xl bg-cyan-500/5 border border-cyan-500/10 p-4">
-                    <p className="font-semibold text-cyan-400 text-sm mb-2">Products & Pain Relievers</p>
-                    <div className="space-y-2">
-                      <p className="text-xs font-semibold text-white">Products:</p>
-                      {OPTION1_DATA.valueCanvas.products.map((prod, i) => (
-                        <p key={i} className="text-xs text-white/60">• {prod}</p>
-                      ))}
-                      <p className="text-xs font-semibold text-white mt-2 mb-1">Pain Relievers:</p>
-                      {OPTION1_DATA.valueCanvas.painRelievers.map((rel, i) => (
-                        <p key={i} className="text-xs text-white/60">• {rel}</p>
-                      ))}
+                  {/* Product Side */}
+                  <div className="rounded-xl bg-purple-500/5 border border-purple-500/20 p-4">
+                    <p className="font-semibold text-purple-400 text-sm mb-3 uppercase tracking-wider">Product Side</p>
+                    <div className="space-y-3">
+                      <div className="rounded-lg bg-white/[0.03] border border-white/[0.06] p-3">
+                        <p className="text-xs font-semibold text-white mb-1.5">Features</p>
+                        <ul className="space-y-1.5">
+                          {OPTION1_DATA.valueCanvas.features.map((feat, i) => (
+                            <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-purple-400 mt-1.5 shrink-0" />{feat}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-lg bg-red-500/5 border border-red-500/10 p-3">
+                        <p className="text-xs font-semibold text-red-400 mb-1.5">Pain Relievers</p>
+                        <ul className="space-y-1.5">
+                          {OPTION1_DATA.valueCanvas.painRelievers.map((rel, i) => (
+                            <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-red-400 mt-1.5 shrink-0" />{rel}</li>
+                          ))}
+                        </ul>
+                      </div>
+                      <div className="rounded-lg bg-emerald-500/5 border border-emerald-500/10 p-3">
+                        <p className="text-xs font-semibold text-emerald-400 mb-1.5">Gain Creators</p>
+                        <ul className="space-y-1.5">
+                          {OPTION1_DATA.valueCanvas.gainCreators.map((gc, i) => (
+                            <li key={i} className="text-xs text-white/60 flex items-start gap-1.5"><span className="h-1 w-1 rounded-full bg-emerald-400 mt-1.5 shrink-0" />{gc}</li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
