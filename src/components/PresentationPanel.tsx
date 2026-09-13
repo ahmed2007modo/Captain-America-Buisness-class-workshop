@@ -541,7 +541,7 @@ export function PresentationPanel() {
 
         {/* OPTION 1 */}
         <div>
-          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><Target className="h-5 w-5 text-cyan-400" /> Market & Positioning — Option 1</h3>
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><Target className="h-5 w-5 text-cyan-400" /> Market & Positioning</h3>
           <div className="space-y-6">
               {/* Competitor Matrix */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/[0.08] p-6">
@@ -689,13 +689,13 @@ export function PresentationPanel() {
 
         {/* OPTION 2 */}
         <div className="border-t border-white/[0.08] pt-6">
-          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><TrendingUp className="h-5 w-5 text-cyan-400" /> GTM & Growth — Option 2</h3>
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><TrendingUp className="h-5 w-5 text-cyan-400" /> GTM & Growth</h3>
           <ArtifactGrid artifacts={OPTION2_DATA} expanded={expandedArtifact} onToggle={(id) => setExpandedArtifact(expandedArtifact === id ? null : id)} />
         </div>
 
         {/* OPTION 3 */}
         <div className="border-t border-white/[0.08] pt-6">
-          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><FileText className="h-5 w-5 text-cyan-400" /> PRD & Deck — Option 3</h3>
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><FileText className="h-5 w-5 text-cyan-400" /> PRD & Deck</h3>
           <ArtifactGrid artifacts={OPTION3_DATA} expanded={expandedArtifact} onToggle={(id) => setExpandedArtifact(expandedArtifact === id ? null : id)} />
         </div>
       </div>
