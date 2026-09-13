@@ -7,8 +7,6 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-type PresentationTab = 'option1' | 'option2' | 'option3'
-
 type ContentBlock =
   | { type: 'heading'; text: string }
   | { type: 'text'; text: string }
@@ -494,7 +492,6 @@ function ArtifactGrid({ artifacts, expanded, onToggle }: { artifacts: Artifact[]
 }
 
 export function PresentationPanel() {
-  const [activeTab, setActiveTab] = useState<PresentationTab>('option1')
   const [expandedArtifact, setExpandedArtifact] = useState<string | null>(null)
 
   return (
@@ -539,34 +536,13 @@ export function PresentationPanel() {
         ))}
       </motion.div>
 
-      {/* Navigation Sub-Tabs */}
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="flex flex-wrap gap-2">
-        {[
-          { id: 'option1', label: 'Option 1: Market & Positioning', icon: Target },
-          { id: 'option2', label: 'Option 2: GTM & Growth', icon: TrendingUp },
-          { id: 'option3', label: 'Option 3: PRD & Deck', icon: FileText },
-        ].map(tab => {
-          const Icon = tab.icon
-          const isActive = activeTab === tab.id
-          return (
-            <button key={tab.id} onClick={() => { setActiveTab(tab.id as PresentationTab); setExpandedArtifact(null) }} className={cn(
-              'relative flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all',
-              isActive ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 text-cyan-400 border border-cyan-500/30' : 'bg-white/[0.02] text-white/50 border border-white/[0.06] hover:border-cyan-500/20 hover:text-white/70'
-            )}>
-              <Icon className="h-4 w-4" />
-              {tab.label}
-            </button>
-          )
-        })}
-      </motion.div>
-
       {/* Content Area */}
-      <AnimatePresence mode="wait">
-        <motion.div key={activeTab} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
+      <div className="space-y-6">
 
-          {/* OPTION 1 */}
-          {activeTab === 'option1' && (
-            <div className="space-y-6">
+        {/* OPTION 1 */}
+        <div>
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><Target className="h-5 w-5 text-cyan-400" /> Market & Positioning — Option 1</h3>
+          <div className="space-y-6">
               {/* Competitor Matrix */}
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="rounded-2xl bg-slate-900/60 backdrop-blur-md border border-white/[0.08] p-6">
                 <div className="flex items-center gap-2 mb-4">
@@ -709,19 +685,20 @@ export function PresentationPanel() {
                 </div>
               </motion.div>
             </div>
-          )}
+          </div>
 
-          {/* OPTION 2 */}
-          {activeTab === 'option2' && (
-            <ArtifactGrid artifacts={OPTION2_DATA} expanded={expandedArtifact} onToggle={(id) => setExpandedArtifact(expandedArtifact === id ? null : id)} />
-          )}
+        {/* OPTION 2 */}
+        <div className="border-t border-white/[0.08] pt-6">
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><TrendingUp className="h-5 w-5 text-cyan-400" /> GTM & Growth — Option 2</h3>
+          <ArtifactGrid artifacts={OPTION2_DATA} expanded={expandedArtifact} onToggle={(id) => setExpandedArtifact(expandedArtifact === id ? null : id)} />
+        </div>
 
-          {/* OPTION 3 */}
-          {activeTab === 'option3' && (
-            <ArtifactGrid artifacts={OPTION3_DATA} expanded={expandedArtifact} onToggle={(id) => setExpandedArtifact(expandedArtifact === id ? null : id)} />
-          )}
-        </motion.div>
-      </AnimatePresence>
+        {/* OPTION 3 */}
+        <div className="border-t border-white/[0.08] pt-6">
+          <h3 className="mb-4 flex items-center gap-2 text-lg font-bold text-white"><FileText className="h-5 w-5 text-cyan-400" /> PRD & Deck — Option 3</h3>
+          <ArtifactGrid artifacts={OPTION3_DATA} expanded={expandedArtifact} onToggle={(id) => setExpandedArtifact(expandedArtifact === id ? null : id)} />
+        </div>
+      </div>
     </div>
   )
 }
