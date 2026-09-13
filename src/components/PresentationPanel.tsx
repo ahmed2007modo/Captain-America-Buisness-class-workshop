@@ -426,7 +426,7 @@ function ChecklistBlock({ items }: { items: string[] }) {
   return (
     <div className="space-y-1.5">
       {items.map((item, i) => (
-        <div key={i} onClick={() => toggle(i)} className="flex cursor-pointer items-start gap-2 rounded-lg border border-white/[0.06] bg-white/[0.02] px-2.5 py-2 transition-colors hover:border-cyan-500/30">
+        <div key={i} onClick={(e) => { e.stopPropagation(); toggle(i) }} className="flex cursor-pointer items-start gap-2 rounded-lg border border-white/[0.06] bg-white/[0.02] px-2.5 py-2 transition-colors hover:border-cyan-500/30">
           <span className={cn('mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded border text-[10px] transition-colors', checked[i] ? 'border-cyan-400 bg-cyan-400 text-black' : 'border-white/20')}>
             {checked[i] && <Check className="h-3 w-3" />}
           </span>
