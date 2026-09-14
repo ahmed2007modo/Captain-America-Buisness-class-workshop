@@ -1,8 +1,8 @@
-import { Bot, Map, Users, ClipboardList, Utensils, Heart, LayoutGrid } from 'lucide-react'
+import { Bot, Map, Users, ClipboardList, Utensils, Heart, Info, LayoutGrid } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 interface NavTab {
-  id: 'consultant' | 'battle' | 'growth' | 'workshop' | 'platewise' | 'influencer' | 'presentation'
+  id: 'consultant' | 'battle' | 'growth' | 'workshop' | 'platewise' | 'influencer' | 'info' | 'presentation'
   label: string
   icon: React.ElementType
 }
@@ -14,6 +14,7 @@ const tabs: NavTab[] = [
   { id: 'workshop', label: 'Workshop', icon: ClipboardList },
   { id: 'platewise', label: 'PlateWise', icon: Utensils },
   { id: 'influencer', label: 'Influencers', icon: Heart },
+  { id: 'info', label: 'Info', icon: Info },
   { id: 'presentation', label: 'Presentation', icon: LayoutGrid },
 ]
 

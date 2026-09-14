@@ -17,7 +17,8 @@ import { WorkshopChecklist } from './components/WorkshopChecklist'
 import { PremiumChatbot } from './components/PremiumChatbot'
 import { PlateWiseModule } from './components/PlateWiseModule'
 import { InfluencerPanel } from './components/InfluencerPanel'
-import { PresentationPanel } from './components/PresentationPanel'
+import { InfoTab } from './components/InfoTab'
+import { PresentationTab } from './components/PresentationTab'
 import ScrollMorphHero from './components/ui/scroll-morph-hero'
 import LoginPage from './components/LoginPage'
 
@@ -52,7 +53,7 @@ const healthResponses: Record<string, { content: string; type: 'widget'; widgetD
 export default function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [darkMode, setDarkMode] = useState(false)
-  const [activeTab, setActiveTab] = useState<'consultant' | 'battle' | 'growth' | 'workshop' | 'platewise' | 'influencer' | 'presentation'>('consultant')
+  const [activeTab, setActiveTab] = useState<'consultant' | 'battle' | 'growth' | 'workshop' | 'platewise' | 'influencer' | 'info' | 'presentation'>('consultant')
   const [streak] = useState(7)
   const [vipRank] = useState('Gold')
   const [university] = useState('GISMA')
@@ -296,7 +297,14 @@ export default function App() {
            {activeTab === 'presentation' && (
              <ErrorBoundary fallback={<div className="p-8 text-center text-white/50">Presentation error</div>}>
                <motion.div key="presentation" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
-                 <PresentationPanel />
+                 <PresentationTab />
+               </motion.div>
+             </ErrorBoundary>
+           )}
+           {activeTab === 'info' && (
+             <ErrorBoundary fallback={<div className="p-8 text-center text-white/50">Info error</div>}>
+               <motion.div key="info" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }} transition={{ duration: 0.3 }}>
+                 <InfoTab />
                </motion.div>
              </ErrorBoundary>
            )}
